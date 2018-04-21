@@ -1,0 +1,32 @@
+var dref = admin.database().ref("/users");
+dref.on("child_added", function(datasnapshot) {
+
+    
+    var data = datasnapshot.val();
+    var fcm = data.fcm;
+    // console.log(fcm);
+    
+    if(fcm!==undefined){
+
+        fcm = Object.keys(fcm).map(key => Object.assign({}, { key: key }, fcm[key]))
+        fcm.forEach(function(childSnapshot) {
+
+            return admin.messaging().sendToDevice(childSnapshot.token, payload)
+            .then(function (response) {
+                console.log("Successfully sent message:", response);
+                console.log("Send token",deviceId);
+            })
+            .catch(function (error) {
+                console.log("Error sending message:", error);
+            });
+        });
+    }
+    //var uid = datasnapshot.val();
+    // var uid = datasnapshot.child('/fcm');
+    // if(uid.type==="Student" && uid.token!== undefined ){
+        
+    // if(uid.type==="Student"){
+    // var deviceId=uid.type;
+    // console.log(deviceId)
+    // }
+});

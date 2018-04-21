@@ -1,0 +1,97 @@
+const functions = require('firebase-functions');
+var admin = require("firebase-admin");
+var serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://pizzadelivery-d4ea0.firebaseio.com"
+});
+
+defaultAuth = admin.auth();
+var database = admin.database();
+
+//   var ref = admin.database().ref("/users");
+// ref.on("child_added", function(snapshot) {
+//           var uid=snapshot.val();
+//         //   var uid = snap.val();
+          
+//           var deviceId= "eUrwGe1metQ:APA91bFQlf3jSnzi3QquAXdQf6qaTBxQ8S1Aw1cb_c_5DpbEFNQa_Azw8CXS_fnUWGgZ_zgoRt6-dsCyHc7QEaYqflK3vibB1vqR5S8BX0FPHKhYqRul-X3_IZvgEB4q7Pu2rv6rHodr";      
+//         if(uid){
+//             console.log("method",uid.token)
+//         }
+//         });
+// exports.makenotification = functions.database.ref('/articles/{articleId}')
+// .onWrite(event => {
+//   var eventSnapshot= event.data;
+//   var value =eventSnapshot.child("author").val();
+
+//   console.log(value);
+//   var topic = "android";
+
+//   var payload = {
+//       data: {
+//           title: eventSnapshot.child("title").val(),
+//           author: eventSnapshot.child("author").val()
+//       }
+//   };
+
+//   var mref = admin.database().ref("/users");
+//   mref.on("child_added", function(snapshot) {
+//       var uid=snapshot.val();
+//      // var deviceId= "eUrwGe1metQ:APA91bFQlf3jSnzi3QquAXdQf6qaTBxQ8S1Aw1cb_c_5DpbEFNQa_Azw8CXS_fnUWGgZ_zgoRt6-dsCyHc7QEaYqflK3vibB1vqR5S8BX0FPHKhYqRul-X3_IZvgEB4q7Pu2rv6rHodr";      
+//      if(uid){
+//          var deviceId=uid.token;
+//         return admin.messaging().sendToDevice(deviceId, payload)
+//         .then(function (response) {
+//             console.log("Successfully sent message:", response);
+//         })
+//         .catch(function (error) {
+//             console.log("Error sending message:", error);
+//         });
+//      }
+//     });
+
+   
+
+// });
+
+exports.notifyStu=functions.database.ref('/jobs/{jobId}')
+.onWrite(event=>{
+ 
+  // console.log(snapshot.child('jobType').val());
+  var snapshot= event.data;
+  var payload={
+      data:{
+        type:snapshot.child('details').child('jobType').val(),
+        vacancy:snapshot.child('details').child('jobVacancy').val()
+      }
+  }; 
+  console.log(snapshot.child('details'));
+
+    var dref = admin.database().ref("/users");
+    // dref.on("child_added", function(datasnapshot) {
+    //     var uid = datasnapshot.val();
+    //     if(uid.type==="Student" && uid.token!== undefined ){
+
+        // var deviceId=uid.token;
+        var id= 'evAD8lxW2Ok:APA91bE9Jp5ZmS6LiCQYELxu298r217pegiCE6udH56PvyF1ciEFqSSZW69IrJv6MIx57MQTlSUthdfXNpvk7RUlsok72aiou8SLI56xAAasrhuJppTtJfr2XkXlYxt1UlXfil13UWGN';
+       return admin.messaging().sendToDevice(id, payload)
+        .then(function (response) {
+            console.log("Successfully sent message:", response);
+            console.log("Successfully error:", response.results[0].error);
+        })
+        .catch(function (error) {
+            console.log("Error sending message:", error);
+        });
+//       }
+//   });
+
+});
+
+
+// // database.push({
+// //     name:"another"
+// // })
+// //  exports.helloWorld = functions.https.onRequest((request, response) => {
+// //   response.send("Hello from Firebase!");
+// //  });

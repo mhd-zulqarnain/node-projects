@@ -1,0 +1,71 @@
+[debug] [2017-11-28T07:29:07.897Z] ----------------------------------------------------------------------
+[debug] [2017-11-28T07:29:07.902Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Zul Qarnain\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2017-11-28T07:29:07.903Z] CLI Version:   3.15.3
+[debug] [2017-11-28T07:29:07.903Z] Platform:      win32
+[debug] [2017-11-28T07:29:07.903Z] Node Version:  v6.11.4
+[debug] [2017-11-28T07:29:07.904Z] Time:          Tue Nov 28 2017 12:29:07 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:07.904Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-28T07:29:07.924Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-28T07:29:07.924Z] > authorizing via signed-in user
+[debug] [2017-11-28T07:29:07.927Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-28T07:29:07.928Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/enx--XkK5nGL2hBar5s4zOQDSpIf-ntb1ySsQhyI1bM',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Nov 28 2017 12:29:07 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:08.449Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T07:29:08.477Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/pizzadelivery-d4ea0  
+ Tue Nov 28 2017 12:29:08 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:09.755Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T07:29:09.757Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/pizzadelivery-d4ea0/tokens  
+ Tue Nov 28 2017 12:29:09 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:10.945Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'pizzadelivery-d4ea0'...
+[info] 
+[info] i  deploying database, functions
+[info] i  database: checking rules syntax...
+[debug] [2017-11-28T07:29:15.568Z] >>> HTTP REQUEST PUT https://pizzadelivery-d4ea0.firebaseio.com/.settings/rules.json?dryRun=true {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+ 
+ Tue Nov 28 2017 12:29:15 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:17.698Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database pizzadelivery-d4ea0 is valid
+[debug] [2017-11-28T07:29:17.706Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] [2017-11-28T07:29:17.713Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/pizzadelivery-d4ea0?view=CONSUMER_VIEW  
+ Tue Nov 28 2017 12:29:17 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:17.715Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/pizzadelivery-d4ea0?view=CONSUMER_VIEW  
+ Tue Nov 28 2017 12:29:17 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:19.775Z] <<< HTTP RESPONSE 200
+[info] +  runtimeconfig: all necessary APIs are enabled
+[debug] [2017-11-28T07:29:19.867Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2017-11-28T07:29:19.871Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/pizzadelivery-d4ea0  
+ Tue Nov 28 2017 12:29:19 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:19.872Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/pizzadelivery-d4ea0/apiKeys  
+ Tue Nov 28 2017 12:29:19 GMT+0500 (Pakistan Standard Time)
+[debug] [2017-11-28T07:29:21.742Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T07:29:21.831Z] <<< HTTP RESPONSE 200
