@@ -26,7 +26,7 @@ export class NewMessegeComponent implements OnInit {
     owner:"",
     text:""
   }
-  @Output childEmitter = new EventEmitter()
+  @Output() childEmitter = new EventEmitter()
 
   constructor(private webservices:WebService) {
   }
